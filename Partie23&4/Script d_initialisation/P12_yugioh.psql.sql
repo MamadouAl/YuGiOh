@@ -1648,4 +1648,9 @@ INSERT INTO P12_langue(nom_langue) VALUES('Anglais'),('Français'),('Allemand'),
 --supression de la table intermédiaire P12_relation
 DROP TABLE P12_relation ;
 
+--Mis a jour
+INSERT INTO p12_edition (nom_edition, date_edition) VALUES('Edition Collectors', '2023-07-01');
 
+UPDATE p12_carteedition
+SET num_edition = (SELECT num_edition FROM p12_edition WHERE nom_edition ='Edition Collectors')
+WHERE carte_rarete = 'Collectors Rare';

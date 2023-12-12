@@ -1665,3 +1665,10 @@ SELECT 'Japonais' FROM dual WHERE 'Japonais' NOT IN (SELECT nom_langue FROM P12_
 
 --Suppression de la table intermediaire
 DROP TABLE P12_relation ;
+
+--Mis a jour
+INSERT INTO p12_edition (nom_edition, date_edition) VALUES('Edition Collectors', '2023-07-01');
+
+UPDATE p12_carteedition
+SET num_edition = (SELECT num_edition FROM p12_edition WHERE nom_edition ='Edition Collectors')
+WHERE carte_rarete = 'Collectors Rare';
